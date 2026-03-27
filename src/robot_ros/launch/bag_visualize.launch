@@ -1,0 +1,26 @@
+<launch>
+  <!-- rosbag 路径，默认指向 SSD 上最新录制的 bag -->
+  <arg name="bag" default="/media/agilex/ASolid_USB_/dataset_20260319_234322_0.bag"/>
+  <!-- 播放速率，1.0 = 实时 -->
+  <arg name="rate" default="1.0"/>
+  <!-- 是否循环播放 -->
+  <arg name="loop" default="false"/>
+
+  <!-- 1. 播放 rosbag -->
+  <node if="$(arg loop)" pkg="rosbag" type="play" name="rosbag_play"
+        args="$(arg bag) --rate=$(arg rate) --clock --loop"
+        output="screen" required="true"/>
+  <node unless="$(arg loop)" pkg="rosbag" type="play" name="rosbag_play"
+        args="$(arg bag) --rate=$(arg rate) --clock"
+        output="screen" required="true"/>
+
+  <!-- 2. Livox CustomMsg → PointCloud2 转换节点 -->
+  <node pkg="robot_ros" type="livox_custom_to_pc2.py"
+        name="livox_custom_to_pc2" output="screen"/>
+
+  <!-- 3. RViz 可视化 -->
+  <node pkg="rviz" type="rviz" name="rviz"
+        args="-d $(find robot_ros)/rviz/bag_visualize.rviz"
+        output="screen"/>
+
+</launch>

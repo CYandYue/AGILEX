@@ -1,0 +1,25 @@
+# ROS catkin 构建产物
+build/
+devel/
+install/
+logs/
+
+# rosbag 录制文件
+*.bag
+*.bag.active
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# 数据集输出目录（按需注释掉）
+# my_dataset/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
