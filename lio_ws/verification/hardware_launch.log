@@ -1,0 +1,263 @@
+[ INFO] [1789134367.962672712]: Livox Ros Driver2 Version: 1.2.4
+data source:0.
+[ INFO] [1789134368.008925483]: Data Source is raw lidar.
+[ INFO] [1789134368.010380926]: Config file : /home/agilex/agilex_ws/lio_ws/src/agilex_lio/config/mid360_dual_raw.json
+LdsLidar *GetInstance
+config lidar type: 8
+successfully parse base config, counts: 2
+[2026-09-11 21:46:08.011] [console] [info] set master/slave sdk to master sdk by default  [parse_cfg_file.cpp] [Parse] [82]
+[2026-09-11 21:46:08.011] [console] [info] Livox lidar logger disable.  [parse_cfg_file.cpp] [Parse] [126]
+[2026-09-11 21:46:08.011] [console] [info] Device type:9 point cloud data and IMU data unicast is enabled.  [params_check.cpp] [CheckLidarMulticastIp] [100]
+[2026-09-11 21:46:08.011] [console] [info] Data Handler Init Succ.  [data_handler.cpp] [Init] [49]
+[2026-09-11 21:46:08.013] [console] [info] Init livox lidars succ.  [device_manager.cpp] [Init] [178]
+Multi thread started 
+[32;1mMulti LiDAR on!
+lidar_type[0]: 1, lidar_type[1]: 1
+
+L2 wrt L1 TF: 
+       -1         0         0 -0.494975
+        0        -1         0         0
+        0         0         1         0
+        0         0         0         1[0m
+
+GetFreeIndex key:livox_lidar_1895934144.
+GetFreeIndex key:livox_lidar_2583800000.
+[ INFO] [1789134368.013407276]: Init lds lidar successfully!
+Init queue, real query size:16.
+Lidar[0] storage queue size: 10
+Init queue, real query size:16.
+Lidar[1] storage queue size: 10
+[2026-09-11 21:46:08.651] [console] [info]  Receive Command: Id 258 Seq 52429  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:08.652] [console] [info]  Receive Command: Id 258 Seq 52429  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:09.022] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:09.028] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:09.033] [console] [info]  Receive Ack: Id 257 Seq 4  [mid360_command_handler.cpp] [Handle] [64]
+[2026-09-11 21:46:09.033] [console] [info] Query Fw type succ, the fw_type:1  [general_command_handler.cpp] [QueryFwTypeCallback] [458]
+[2026-09-11 21:46:09.033] [console] [info]  Receive Ack: Id 257 Seq 5  [mid360_command_handler.cpp] [Handle] [64]
+[2026-09-11 21:46:09.033] [console] [info] Query Fw type succ, the fw_type:1  [general_command_handler.cpp] [QueryFwTypeCallback] [458]
+[2026-09-11 21:46:09.659] [console] [info]  Receive Command: Id 258 Seq 52455  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:09.660] [console] [info]  Receive Command: Id 258 Seq 52455  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:10.023] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:10.024] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:10.025] [console] [info]  Receive Ack: Id 256 Seq 7  [mid360_command_handler.cpp] [Handle] [64]
+[2026-09-11 21:46:10.025] [console] [info] Update lidar:2583800000 succ.  [mid360_command_handler.cpp] [UpdateLidarCallback] [169]
+set pcl data type, handle: 2583800000, data type: 1
+set scan pattern, handle: 2583800000, scan pattern: 0
+set blind spot, handle: 2583800000, blind spot distance: 50
+begin to change work mode to 'Normal', handle: 2583800000
+[2026-09-11 21:46:10.026] [console] [info]  Receive Ack: Id 256 Seq 8  [mid360_command_handler.cpp] [Handle] [64]
+[2026-09-11 21:46:10.026] [console] [info] Update lidar:1895934144 succ.  [mid360_command_handler.cpp] [UpdateLidarCallback] [169]
+set pcl data type, handle: 1895934144, data type: 1
+set scan pattern, handle: 1895934144, scan pattern: 0
+set blind spot, handle: 1895934144, blind spot distance: 50
+begin to change work mode to 'Normal', handle: 1895934144
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 9  [mid360_command_handler.cpp] [Handle] [64]
+successfully set data type, handle: 2583800000, set_bit: 6
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 10  [mid360_command_handler.cpp] [Handle] [64]
+successfully set pattern mode, handle: 2583800000, set_bit: 4
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 11  [mid360_command_handler.cpp] [Handle] [64]
+successfully set blind spot, handle: 2583800000, set_bit: 0
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 12  [mid360_command_handler.cpp] [Handle] [64]
+successfully set lidar attitude, ip: 192.168.1.154
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 13  [mid360_command_handler.cpp] [Handle] [64]
+successfully change work mode, handle: 2583800000
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 14  [mid360_command_handler.cpp] [Handle] [64]
+successfully enable Livox Lidar imu, ip: 192.168.1.154
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 15  [mid360_command_handler.cpp] [Handle] [64]
+successfully set data type, handle: 1895934144, set_bit: 6
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 16  [mid360_command_handler.cpp] [Handle] [64]
+successfully set pattern mode, handle: 1895934144, set_bit: 4
+[2026-09-11 21:46:10.028] [console] [info]  Receive Ack: Id 256 Seq 17  [mid360_command_handler.cpp] [Handle] [64]
+successfully set blind spot, handle: 1895934144, set_bit: 0
+[2026-09-11 21:46:10.029] [console] [info]  Receive Ack: Id 256 Seq 18  [mid360_command_handler.cpp] [Handle] [64]
+successfully set lidar attitude, ip: 192.168.1.113
+[2026-09-11 21:46:10.029] [console] [info]  Receive Ack: Id 256 Seq 19  [mid360_command_handler.cpp] [Handle] [64]
+successfully change work mode, handle: 1895934144
+[2026-09-11 21:46:10.029] [console] [info]  Receive Ack: Id 256 Seq 20  [mid360_command_handler.cpp] [Handle] [64]
+successfully enable Livox Lidar imu, ip: 192.168.1.113
+[2026-09-11 21:46:10.031] [console] [info]  Receive Command: Id 258 Seq 52466  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:10.032] [console] [info]  Receive Command: Id 258 Seq 52466  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:10.652] [console] [info]  Receive Command: Id 258 Seq 52482  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:10.653] [console] [info]  Receive Command: Id 258 Seq 52482  [mid360_command_handler.cpp] [Handle] [67]
+[ INFO] [1789134371.014117718]: Support multi topics.
+[ INFO] [1789134371.017135011]: Support multi topics.
+[ INFO] [1789134371.018226585]: livox/imu_192_168_1_113 publish imu data, set ROS publisher queue size 64
+[DEBUG] [1789134371.018309503]: Trying to publish message of type [sensor_msgs/Imu/6a62c6daae103f4ff57a132d6f95cec2] on a publisher with type [sensor_msgs/Imu/6a62c6daae103f4ff57a132d6f95cec2]
+[ INFO] [1789134371.019390836]: Support multi topics.
+[2026-09-11 21:46:11.023] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:11.024] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[ WARN] [1789134371.461895288]: Dropping unpaired lidar scan: check clocks/rates
+[ WARN] [1789134371.471095019]: No point, skip this scan!
+
+[ INFO] [1789134371.033791200]: livox/lidar_192_168_1_113 publish use livox custom format, set ROS publisher queue size 4
+[DEBUG] [1789134371.034052437]: Trying to publish message of type [livox_ros_driver2/CustomMsg/e4d6829bdfe657cb6c21a746c86b21a6] on a publisher with type [livox_ros_driver2/CustomMsg/e4d6829bdfe657cb6c21a746c86b21a6]
+[ INFO] [1789134371.036343945]: livox/imu_192_168_1_154 publish imu data, set ROS publisher queue size 64
+[ INFO] [1789134371.111756177]: Support multi topics.
+[ INFO] [1789134371.114779615]: livox/lidar_192_168_1_154 publish use livox custom format, set ROS publisher queue size 4
+[2026-09-11 21:46:11.652] [console] [info]  Receive Command: Id 258 Seq 52508  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:11.653] [console] [info]  Receive Command: Id 258 Seq 52508  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:12.024] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:12.026] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:12.651] [console] [info]  Receive Command: Id 258 Seq 52534  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:12.652] [console] [info]  Receive Command: Id 258 Seq 52534  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:13.025] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:13.036] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:13.652] [console] [info]  Receive Command: Id 258 Seq 52560  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:13.655] [console] [info]  Receive Command: Id 258 Seq 52560  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:14.026] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:14.027] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:14.651] [console] [info]  Receive Command: Id 258 Seq 52586  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:14.653] [console] [info]  Receive Command: Id 258 Seq 52586  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:15.026] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:15.027] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:15.651] [console] [info]  Receive Command: Id 258 Seq 52612  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:15.652] [console] [info]  Receive Command: Id 258 Seq 52612  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:16.031] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:16.031] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:16.652] [console] [info]  Receive Command: Id 258 Seq 52638  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:16.652] [console] [info]  Receive Command: Id 258 Seq 52638  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:17.031] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:17.031] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:17.652] [console] [info]  Receive Command: Id 258 Seq 52664  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:17.653] [console] [info]  Receive Command: Id 258 Seq 52664  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:18.032] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:18.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:18.652] [console] [info]  Receive Command: Id 258 Seq 52690  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:18.653] [console] [info]  Receive Command: Id 258 Seq 52690  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:19.031] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:19.034] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:19.652] [console] [info]  Receive Command: Id 258 Seq 52716  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:19.653] [console] [info]  Receive Command: Id 258 Seq 52716  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:20.032] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:20.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:20.652] [console] [info]  Receive Command: Id 258 Seq 52742  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:20.653] [console] [info]  Receive Command: Id 258 Seq 52742  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:21.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:21.034] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:21.652] [console] [info]  Receive Command: Id 258 Seq 52768  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:21.653] [console] [info]  Receive Command: Id 258 Seq 52768  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:22.037] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:22.037] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:22.652] [console] [info]  Receive Command: Id 258 Seq 52794  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:22.653] [console] [info]  Receive Command: Id 258 Seq 52794  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:23.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:23.034] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:23.653] [console] [info]  Receive Command: Id 258 Seq 52820  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:23.654] [console] [info]  Receive Command: Id 258 Seq 52820  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:24.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:24.035] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:24.652] [console] [info]  Receive Command: Id 258 Seq 52846  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:24.653] [console] [info]  Receive Command: Id 258 Seq 52846  [mid360_command_handler.cpp] [Handle] [67]
+[2026-09-11 21:46:25.033] [console] [info] Handle detection data, handle:1895934144, dev_type:9, sn:47MCNBT0032813, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[2026-09-11 21:46:25.034] [console] [info] Handle detection data, handle:2583800000, dev_type:9, sn:47MCNBD0035254, cmd_port:56100  [general_command_handler.cpp] [HandleDetectionData] [319]
+[ WARN] [1789134385.108562716]: catch sig 2
+[ INFO] [1789134371.471032326]: IMU Initial Done
+Rebuild thread terminated normally
+[WARN] [1789134369.571723]: Using vendor/nominal extrinsic initial values; time alignment and calibration accuracy are unverified. IMU: hi226
+Livox Lidar SDK Deinit completely!
+lddc destory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+lds destory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+... logging to /tmp/agilex-lio-hardware-crkg5kdr/2020ee7a-ade7-11f1-b86e-3c6d6603f775/roslaunch-agilex-desktop-17204.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/agilex/agilex_ws/lio_ws/src/agilex_lio/launch/mapping.launch
+[1mstarted roslaunch server http://127.0.0.1:32911/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /data_src: 0
+ * /enable_imu_bag: False
+ * /enable_lidar_bag: False
+ * /frame_id: livox_frame
+ * /lio/common/async_debug: False
+ * /lio/common/bundle_max_pair_skew: 0.05
+ * /lio/common/imu_topic: /imu/data_raw
+ * /lio/common/lid_topic2: /sensors/mid360_b...
+ * /lio/common/lid_topic: /sensors/mid360_a...
+ * /lio/common/map_frame: lio_map
+ * /lio/common/max_iteration: 3
+ * /lio/common/multi_lidar: True
+ * /lio/common/publish_tf_results: False
+ * /lio/mapping/acc_cov: 0.1
+ * /lio/mapping/b_acc_cov: 0.0001
+ * /lio/mapping/b_gyr_cov: 0.0001
+ * /lio/mapping/cube_side_length: 200.0
+ * /lio/mapping/det_range: 50.0
+ * /lio/mapping/extrinsic_R: [0.71091353801227...
+ * /lio/mapping/extrinsic_R_L1_wrt_drone: [1, 0, 0, 0, 1, 0...
+ * /lio/mapping/extrinsic_R_L2_wrt_L1: [-1, 0, 0, 0, -1,...
+ * /lio/mapping/extrinsic_T: [0.175, -0.175, 0...
+ * /lio/mapping/extrinsic_T_L1_wrt_drone: [0, 0, 0]
+ * /lio/mapping/extrinsic_T_L2_wrt_L1: [-0.4949747468305...
+ * /lio/mapping/extrinsic_est_en: False
+ * /lio/mapping/extrinsic_imu_to_lidars: False
+ * /lio/mapping/gyr_cov: 0.1
+ * /lio/method/bundle_enabled_tic_thres: 10
+ * /lio/method/effect_pt_num_ratio_thres: 0.4
+ * /lio/method/voxelized_pt_num_thres: 1000
+ * /lio/pcd_save/interval: 100
+ * /lio/pcd_save/pcd_save_en: False
+ * /lio/preprocess/blind2: 0.5
+ * /lio/preprocess/blind: 0.5
+ * /lio/preprocess/filter_size_surf: 0.2
+ * /lio/preprocess/lidar_type2: 1
+ * /lio/preprocess/lidar_type: 1
+ * /lio/preprocess/point_filter_num2: 6
+ * /lio/preprocess/point_filter_num: 6
+ * /lio/preprocess/scan_line2: 4
+ * /lio/preprocess/scan_line: 4
+ * /lio/preprocess/scan_rate2: 10
+ * /lio/preprocess/scan_rate: 10
+ * /lio/preprocess/timestamp_unit2: 3
+ * /lio/preprocess/timestamp_unit: 3
+ * /lio/publish/dense_publish_en: False
+ * /lio/publish/path_en: True
+ * /lio/publish/scan_bodyframe_pub_en: False
+ * /lio/publish/scan_publish_en: True
+ * /lio_mounts/base_to_camera/rpy: [0, 0, 0]
+ * /lio_mounts/base_to_camera/translation: [0.205, 0, 0.07]
+ * /lio_mounts/base_to_external_imu/rpy: [0, 0, 0]
+ * /lio_mounts/base_to_external_imu/translation: [0, 0, 0]
+ * /lio_mounts/base_to_lidar1/rpy: [0, 0, -0.78]
+ * /lio_mounts/base_to_lidar1/translation: [0.175, -0.175, 0...
+ * /lio_mounts/internal_imu_to_lidar/rpy: [0, 0, 0]
+ * /lio_mounts/internal_imu_to_lidar/translation: [-0.011, -0.02329...
+ * /lio_sensor_frames/imu_source: hi226
+ * /lio_sensor_frames/lidar_config: /home/agilex/agil...
+ * /lio_sensor_relay/input_topics: ['/livox/lidar_19...
+ * /multi_topic: 1
+ * /output_data_type: 0
+ * /publish_freq: 10.0
+ * /rosdistro: noetic
+ * /rosversion: 1.17.0
+ * /use_sim_time: False
+ * /user_config_path: /home/agilex/agil...
+ * /xfer_format: 1
+
+NODES
+  /
+    lio_hi226 (serial_imu/serial_imu)
+    lio_livox_driver (livox_ros_driver2/livox_ros_driver2_node)
+    lio_sensor_frames (agilex_lio/sensor_frames.py)
+    lio_sensor_relay (agilex_lio/sensor_relay)
+  /lio/
+    mapping (fast_lio_multi/fast_lio_multi_bundle)
+
+[1mROS_MASTER_URI=http://127.0.0.1:37133[0m
+]2;/home/agilex/agilex_ws/lio_ws/src/agilex_lio/launch/mapping.launch http://127.0.0.1:37133
+[1mprocess[lio/mapping-1]: started with pid [17254][0m
+[1mprocess[lio_sensor_frames-2]: started with pid [17255][0m
+[1mprocess[lio_sensor_relay-3]: started with pid [17256][0m
+[1mprocess[lio_livox_driver-4]: started with pid [17268][0m
+[1mprocess[lio_hi226-5]: started with pid [17269][0m
+[lio_hi226-5] killing on exit
+[lio_livox_driver-4] killing on exit
+[lio_sensor_relay-3] killing on exit
+[lio_sensor_frames-2] killing on exit
+[lio/mapping-1] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

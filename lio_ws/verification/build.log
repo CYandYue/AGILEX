@@ -1,0 +1,126 @@
+[  0%] Built target std_srvs_generate_messages_nodejs
+[  0%] Built target tf2_msgs_generate_messages_nodejs
+[  0%] Built target tf2_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target tf_generate_messages_nodejs
+[  0%] Built target tf_generate_messages_lisp
+[  0%] Built target tf_generate_messages_cpp
+[  0%] Built target topic_tools_generate_messages_nodejs
+[  0%] Built target topic_tools_generate_messages_eus
+[  0%] Built target livox_ros_driver2_generate_messages_nodejs
+[  0%] Built target bond_generate_messages_py
+[  0%] Built target livox_ros_driver2_generate_messages_lisp
+[  0%] Built target livox_ros_driver2_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target topic_tools_generate_messages_lisp
+[  0%] Built target livox_ros_driver2_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target livox_ros_driver2_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[  0%] Built target pcl_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target tf2_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target tf2_msgs_generate_messages_py
+[  0%] Built target dynamic_reconfigure_generate_messages_nodejs
+[  0%] Built target bond_generate_messages_cpp
+[  0%] Built target bond_generate_messages_eus
+[  0%] Built target bond_generate_messages_lisp
+[  0%] Built target topic_tools_generate_messages_py
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target nodelet_topic_tools_gencfg
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target dynamic_reconfigure_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target tf_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target actionlib_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target std_srvs_generate_messages_cpp
+[  0%] Built target std_srvs_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target pcl_ros_gencfg
+[  0%] Built target tf_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target dynamic_reconfigure_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target dynamic_reconfigure_generate_messages_eus
+[  0%] Built target dynamic_reconfigure_gencfg
+[  0%] Built target nodelet_generate_messages_cpp
+[  0%] Built target tf2_msgs_generate_messages_cpp
+[  0%] Built target dynamic_reconfigure_generate_messages_lisp
+[  0%] Built target std_srvs_generate_messages_lisp
+[  0%] Built target nodelet_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target nodelet_generate_messages_lisp
+[  0%] Built target nodelet_generate_messages_nodejs
+[  0%] Built target bond_generate_messages_nodejs
+[  0%] Built target pcl_msgs_generate_messages_eus
+[  0%] Built target topic_tools_generate_messages_cpp
+[  0%] Built target pcl_msgs_generate_messages_nodejs
+[  0%] Built target pcl_msgs_generate_messages_lisp
+[  0%] Built target pcl_msgs_generate_messages_py
+[  0%] Built target std_srvs_generate_messages_eus
+[  0%] Built target nodelet_generate_messages_py
+[ 42%] Built target fast_lio_multi_ikd_preprocess
+[ 71%] Built target sensor_relay
+Scanning dependencies of target fast_lio_multi_bundle
+[ 85%] Building CXX object FAST_LIO_MULTI/CMakeFiles/fast_lio_multi_bundle.dir/src/laserMapping_bundle.cpp.o
+In file included from /usr/include/boost/preprocessor/tuple/elem.hpp:23,
+                 from /usr/include/boost/preprocessor/arithmetic/add.hpp:21,
+                 from /usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66,
+                 from /usr/include/boost/mpl/aux_/na_spec.hpp:28,
+                 from /usr/include/boost/mpl/next_prior.hpp:18,
+                 from /usr/include/boost/mpl/next.hpp:17,
+                 from /usr/include/boost/mpl/list/aux_/push_front.hpp:18,
+                 from /usr/include/boost/mpl/list/list0.hpp:19,
+                 from /usr/include/boost/mpl/list/list10.hpp:18,
+                 from /usr/include/boost/mpl/list/list20.hpp:18,
+                 from /usr/include/boost/mpl/list.hpp:36,
+                 from /usr/include/boost/math/policies/policy.hpp:9,
+                 from /usr/include/boost/math/policies/error_handling.hpp:21,
+                 from /usr/include/boost/math/special_functions/round.hpp:14,
+                 from /opt/ros/noetic/include/ros/time.h:58,
+                 from /opt/ros/noetic/include/ros/ros.h:38,
+                 from /home/agilex/agilex_ws/lio_ws/src/FAST_LIO_MULTI/src/laserMapping_bundle.cpp:47:
+/home/agilex/agilex_ws/lio_ws/src/FAST_LIO_MULTI/src/preprocess.h:49:6: warning: ‘using uint16_t = uint16_t’ is deprecated: use std::uint16_t instead of pcl::uint16_t [-Wdeprecated-declarations]
+   49 |     (uint16_t, ring, ring)
+      |      ^~~~~~~~
+In file included from /usr/include/pcl-1.10/pcl/PCLHeader.h:10,
+                 from /usr/include/pcl-1.10/pcl/point_cloud.h:47,
+                 from /home/agilex/agilex_ws/lio_ws/src/FAST_LIO_MULTI/src/laserMapping_bundle.cpp:57:
+/usr/include/pcl-1.10/pcl/pcl_macros.h:94:9: note: declared here
+   94 |   using uint16_t [[deprecated("use std::uint16_t instead of pcl::uint16_t")]] = std::uint16_t;
+      |         ^~~~~~~~
+[100%] Linking CXX executable /home/agilex/agilex_ws/lio_ws/devel/lib/fast_lio_multi/fast_lio_multi_bundle
+[100%] Built target fast_lio_multi_bundle
+Base path: /home/agilex/agilex_ws/lio_ws
+Source space: /home/agilex/agilex_ws/lio_ws/src
+Build space: /home/agilex/agilex_ws/lio_ws/build
+Devel space: /home/agilex/agilex_ws/lio_ws/devel
+Install space: /home/agilex/agilex_ws/lio_ws/install
+####
+#### Running command: "make cmake_check_build_system" in "/home/agilex/agilex_ws/lio_ws/build"
+####
+####
+#### Running command: "make -j2 -l2" in "/home/agilex/agilex_ws/lio_ws/build"
+####

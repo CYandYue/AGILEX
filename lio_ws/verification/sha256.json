@@ -1,0 +1,9 @@
+{
+  "devel/lib/fast_lio_multi/fast_lio_multi_bundle": "7c9ad63a9fc9f30ad1c86fcb0f88195c7ec06ecd8d9b86c51b8f46e2857c68f1",
+  "devel/lib/agilex_lio/sensor_relay": "817e47cb92721d99c0dc3d5fab249652cab40942367898dfcdd6969b1878fd35",
+  "patches/fast_lio_multi_driver2_bundle.patch": "cd0febe9ddc3a18a2cc7ee6460f4c1b41ae9e50f92a8c002ed714a9b409a8658",
+  "src/agilex_lio/config/hi226.yaml": "ff865e6fec87f9c5ed732558635fe64f7730403d2936c0fff2f943c97ca035aa",
+  "src/agilex_lio/config/mid360.yaml": "6681eb1411dcafe87cc03f00da0b77f3e79a58a7755f76ebf0df3d1205579288",
+  "src/agilex_lio/config/mounts.yaml": "255ad8d759e573ce1f1574e96710a0815876f7a0f7f81fd59e7fe46018a058c1",
+  "src/agilex_lio/config/mid360_dual_raw.json": "e2c2923567e90285f3cc6d21d916b7e1e28f96e627faa3c75130c50e0685b3d5"
+}

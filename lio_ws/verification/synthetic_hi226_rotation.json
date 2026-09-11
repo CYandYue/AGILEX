@@ -1,0 +1,17 @@
+{
+  "imu_source": "hi226",
+  "method": "bundle",
+  "odometry_messages": 88,
+  "stationary_position_norm_m": 0.00045569210027923056,
+  "final_stamp_error_s": -7.796287536621094e-05,
+  "final_position_m": [
+    2.3649515216532574e-05,
+    0.00045441280010659384,
+    -2.459670275065551e-05
+  ],
+  "yaw_rate_rad_s": 0.5,
+  "yaw_error_rad": -0.0017970871198753396,
+  "startup_skew_guard": true,
+  "logs": "/tmp/agilex-lio-smoke-emmtpmn4",
+  "status": "PASS"
+}

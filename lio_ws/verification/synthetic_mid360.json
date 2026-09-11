@@ -1,0 +1,17 @@
+{
+  "imu_source": "mid360",
+  "method": "bundle",
+  "odometry_messages": 88,
+  "stationary_position_norm_m": 2.271418894596047e-05,
+  "final_stamp_error_s": -7.796287536621094e-05,
+  "final_position_m": [
+    -2.1749965684025108e-07,
+    2.0803072862680965e-08,
+    2.2713138061576312e-05
+  ],
+  "yaw_rate_rad_s": 0.0,
+  "yaw_error_rad": -3.757448057004625e-09,
+  "startup_skew_guard": true,
+  "logs": "/tmp/agilex-lio-smoke-ts5y03ka",
+  "status": "PASS"
+}

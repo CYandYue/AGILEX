@@ -1,0 +1,74 @@
+{
+  "/imu/data_raw": {
+    "count": 3262,
+    "frame": "imu_link",
+    "first_stamp": 1789134368.1249669,
+    "last_stamp": 1789134384.9036162,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.002318673598700546,
+    "rate_hz": 194.3541423291045,
+    "last_arrival_minus_stamp_s": 0.010989189147949219,
+    "mean_acc_norm": 9.925802439099492,
+    "mean_gyro_norm": 0.0014217514672781406
+  },
+  "/livox/lidar_192_168_1_113": {
+    "count": 139,
+    "frame": "livox_frame",
+    "first_stamp": 1789134371.0337296,
+    "last_stamp": 1789134384.826955,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.11123840071314531,
+    "rate_hz": 10.004911449593237,
+    "last_arrival_minus_stamp_s": 0.11228132247924805,
+    "mean_points": 19893.410071942446,
+    "mean_end_offset_ns": 97389403.65467626
+  },
+  "/livox/lidar_192_168_1_154": {
+    "count": 137,
+    "frame": "livox_frame",
+    "first_stamp": 1789134371.1262586,
+    "last_stamp": 1789134384.7264345,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.1165461592430616,
+    "rate_hz": 9.999870694654401,
+    "last_arrival_minus_stamp_s": 0.12220573425292969,
+    "mean_points": 19890.218978102188,
+    "mean_end_offset_ns": 97649261.24087591
+  },
+  "/livox/imu_192_168_1_113": {
+    "count": 2768,
+    "frame": "livox_frame",
+    "first_stamp": 1789134371.1064658,
+    "last_stamp": 1789134384.928555,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.0033120978085291867,
+    "rate_hz": 200.18681408528272,
+    "last_arrival_minus_stamp_s": 0.02332472801208496,
+    "mean_acc_norm": 0.9916199003334426,
+    "mean_gyro_norm": 0.031555098026128436
+  },
+  "/livox/imu_192_168_1_154": {
+    "count": 2779,
+    "frame": "livox_frame",
+    "first_stamp": 1789134371.1178606,
+    "last_stamp": 1789134385.0072973,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.003903965076640082,
+    "rate_hz": 200.00811088612915,
+    "last_arrival_minus_stamp_s": 0.006148338317871094,
+    "mean_acc_norm": 0.9895552539730723,
+    "mean_gyro_norm": 0.014055542102120013
+  },
+  "/lio/odometry": {
+    "count": 133,
+    "frame": "lio_map",
+    "first_stamp": 1789134371.6285222,
+    "last_stamp": 1789134384.8273048,
+    "nonincreasing_intervals": 0,
+    "mean_arrival_minus_stamp_s": 0.09187879418968257,
+    "rate_hz": 10.000922295343797,
+    "last_arrival_minus_stamp_s": 0.10216116905212402,
+    "mean_position_norm_m": 0.012806663145824298,
+    "last_position_norm_m": 0.013827610077338038
+  }
+}
