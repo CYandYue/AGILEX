@@ -1,0 +1,68 @@
+common:
+    async_debug: true               # debugging cout only for asynchrnous update
+    multi_lidar: true               # if false, single-LiDAR with the first LiDAR topic, extrinsic
+    publish_tf_results: false       # publish the transformed LIO and PCD results with extrinsic_T_L1_wrt_drone and extrinsic_R_L1_wrt_drone
+    max_iteration: 3                # max iter of IEKF
+    map_frame: "map"                # publish frame, e.g., previous LO/LIO methods used "camera_init", which is super inconvenient.
+    lid_topic:  "/livox/mid360"
+    lid_topic2:  "/livox/mid360/second"
+    imu_topic:  "/mavros/imu/data_raw"
+
+method:                             # Only used for adaptive mode, thresholds to change mode between bundle and async
+    voxelized_pt_num_thres: 1000
+    effect_pt_num_ratio_thres: 0.4
+    bundle_enabled_tic_thres: 10
+    
+preprocess:
+    filter_size_surf: 0.4           # voxel size
+    point_filter_num: 2             # downsampling points, default values: 3 or 2 for LiVOX, 4 for Ouster and Velodyne
+    point_filter_num2: 2            # downsampling points, default values: 3 or 2 for LiVOX, 4 for Ouster and Velodyne
+    lidar_type: 1                   # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    lidar_type2: 1                  # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 1
+    scan_line2: 1
+    scan_rate: 10                   # only need to be set for velodyne, unit: Hz,
+    scan_rate2: 10                  # only need to be set for velodyne, unit: Hz,
+    timestamp_unit: 3               # the unit of time/t field in the PointCloud2 rostopic: 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+    timestamp_unit2: 3              # the unit of time/t field in the PointCloud2 rostopic: 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+    blind: 2
+    blind2: 2
+
+mapping:
+    cube_side_length: 1000.0
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    det_range:     100.0
+    extrinsic_est_en:  false       # not supported yet for multi # true: enable the online estimation of IMU-LiDAR extrinsic only for the first LiDAR
+    
+    ## Choose between (T, R, T2, R2) OR (T, R, T_L2_wrt_L1, R_L2_wrt_L1)
+    extrinsic_imu_to_lidars: true  # true: use (T, R, T2, R2), false: use (T, R, T_L2_wrt_L1, R_L2_wrt_L1)
+    extrinsic_T: [ 0.1, 0.0, 0.1 ]
+    extrinsic_R: [-0.7986355,  0.0000000, 0.6018150, #143
+                  0, 1, 0,
+                  -0.6018150,  0.0000000, -0.7986355]
+    extrinsic_T2: [ 0.0, 0.0, -0.1 ]
+    extrinsic_R2: [-0.7986355, -0.0000000,  -0.6018150, #143
+                   0, 1, 0,
+                   0.6018150,  0.0000000, -0.7986355]
+    extrinsic_T_L2_wrt_L1: [0.0, 0.0, 0.0]
+    extrinsic_R_L2_wrt_L1: [1.0, 0.0, 0.0,
+                            0, 1, 0,
+                            0.0, 0.0, 1.0]
+    
+    extrinsic_T_L1_wrt_drone: [0.0, 0.0, 0.0] # only used when publish_tf_results is true, for visualization
+    extrinsic_R_L1_wrt_drone: [1.0, 0.0, 0.0, # only used when publish_tf_results is true, for visualization
+                               0.0, 1.0, 0.0,
+                               0.0, 0.0, 1.0]
+publish:
+    path_en:  true
+    scan_publish_en:  true       # false: close all the point cloud output
+    dense_publish_en: true      # false: low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: false # true: output the point cloud scans in IMU-body-frame
+
+pcd_save:
+    pcd_save_en: false
+    interval: -1                 # how many LiDAR frames saved in each pcd file; 
+                                 # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.

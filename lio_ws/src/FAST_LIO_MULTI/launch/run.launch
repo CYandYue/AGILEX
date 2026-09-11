@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch file for velodyne16 VLP-16 LiDAR -->
+
+  <arg name="rviz" default="true" />
+  <arg name="update_method" default="bundle" /> <!-- bundle, async, adaptive, wrong_bundle -->
+  <arg name="config" default="multi" /> <!-- multi, multi_simulation, ntu_viral, hilti2021 ... -->
+  
+  <rosparam command="load" file="$(find fast_lio_multi)/config/$(arg config).yaml" />
+
+  <!-- run fast_lio -->
+  <group if="$(eval arg ('update_method') == 'bundle')">
+    <node pkg="fast_lio_multi" type="fast_lio_multi_bundle" name="laserMapping_multi" output="screen"/> 
+  </group>
+  <group if="$(eval arg ('update_method') == 'wrong_bundle')">
+    <node pkg="fast_lio_multi" type="fast_lio_multi_wrong_bundle" name="laserMapping_multi" output="screen"/> 
+  </group>
+  <group if="$(eval arg ('update_method') == 'async')">
+    <node pkg="fast_lio_multi" type="fast_lio_multi_async" name="laserMapping_multi" output="screen"/> 
+  </group>
+  <group if="$(eval arg ('update_method') == 'adaptive')">
+    <node pkg="fast_lio_multi" type="fast_lio_multi_adaptive" name="laserMapping_multi" output="screen"/>
+  </group>
+
+  <!-- visualize -->
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find fast_lio_multi)/rviz.rviz" />
+    <!-- <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz_tf" args="-d $(find fast_lio_multi)/rviz_tf.rviz" /> -->
+  </group>
+
+
+</launch>
