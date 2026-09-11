@@ -1,0 +1,62 @@
+[
+  {
+    "path": "src/Livox-SDK2",
+    "upstream": "https://github.com/Livox-SDK/Livox-SDK2.git",
+    "commit": "6a940156dd7151c3ab6a52442d86bc83613bd11b",
+    "local_changes": "",
+    "gitlinks": []
+  },
+  {
+    "path": "src/livox_ros_driver2",
+    "upstream": "https://github.com/Livox-SDK/livox_ros_driver2.git",
+    "commit": "6b9356cadf77084619ba406e6a0eb41163b08039",
+    "local_changes": " M CMakeLists.txt\n M build.sh\n M config/MID360_config.json\n?? config/MID360_config_2.json\n",
+    "gitlinks": []
+  },
+  {
+    "path": "src/navigation",
+    "upstream": "https://gitee.com/agilexrobotics/navigation.git",
+    "commit": "5c7a79d7865ef78d5f409ed5d0db71cea9f3de73",
+    "local_changes": " D laser_scan_matcher/CHANGELOG.rst\n D laser_scan_matcher/CMakeLists.txt\n D laser_scan_matcher/demo/demo.bag\n D laser_scan_matcher/demo/demo.launch\n D laser_scan_matcher/demo/demo.rviz\n D laser_scan_matcher/demo/demo_gmapping.launch\n D laser_scan_matcher/demo/demo_gmapping.rviz\n D laser_scan_matcher/demo/demo_vel.launch\n D laser_scan_matcher/include/laser_scan_matcher/laser_scan_matcher.h\n D laser_scan_matcher/include/laser_scan_matcher/laser_scan_matcher_nodelet.h\n D laser_scan_matcher/laser_scan_matcher_nodelet.xml\n D laser_scan_matcher/package.xml\n D laser_scan_matcher/src/laser_scan_matcher.cpp\n D laser_scan_matcher/src/laser_scan_matcher_node.cpp\n D laser_scan_matcher/src/laser_scan_matcher_nodelet.cpp\n D laser_scan_matcher/test/covariance.test\n D laser_scan_matcher/test/run.test\n M pointcloud_to_laserscan/launch/point_to_scan.launch\n?? navi_multi_goals_pub/\n?? rf2o_laser_odometry-master/\n",
+    "gitlinks": []
+  },
+  {
+    "path": "src/realsense-ros",
+    "upstream": "https://github.com/IntelRealSense/realsense-ros.git",
+    "commit": "e4938bbbfd7b285fe71f81fe69cebcc76dbf72fc",
+    "local_changes": " M .github/workflows/main.yml\n M .gitignore\n M .travis.yml\n M LICENSE\n M NOTICE\n M README.md\n M realsense2_camera/.gitignore\n M realsense2_camera/CHANGELOG.rst\n M realsense2_camera/CMakeLists.txt\n M realsense2_camera/debian/udev.em\n M realsense2_camera/include/realsense2_camera/base_realsense_node.h\n M realsense2_camera/include/realsense2_camera/constants.h\n M realsense2_camera/include/realsense2_camera/realsense_node_factory.h\n M realsense2_camera/include/realsense2_camera/t265_realsense_node.h\n M realsense2_camera/launch/demo_pointcloud.launch\n M realsense2_camera/launch/demo_t265.launch\n M realsense2_camera/launch/includes/nodelet.launch.xml\n M realsense2_camera/launch/opensource_tracking.launch\n M realsense2_camera/launch/rs_aligned_depth.launch\n M realsense2_camera/launch/rs_camera.launch\n M realsense2_camera/launch/rs_d400_and_t265.launch\n M realsense2_camera/launch/rs_d435_camera_with_model.launch\n M realsense2_camera/launch/rs_from_file.launch\n M realsense2_camera/launch/rs_multiple_devices.launch\n M realsense2_camera/launch/rs_rgbd.launch\n M realsense2_camera/launch/rs_rtabmap.launch\n M realsense2_camera/launch/rs_t265.launch\n M realsense2_camera/librealsense2_bionic.rdmanifest\n M realsense2_camera/librealsense2_xenial.rdmanifest\n M realsense2_camera/msg/Extrinsics.msg\n M realsense2_camera/msg/IMUInfo.msg\n M realsense2_camera/msg/Metadata.msg\n M realsense2_camera/nodelet_plugins.xml\n M realsense2_camera/package.xml\n M realsense2_camera/rviz/pointcloud.rviz\n M realsense2_camera/rviz/t265.rviz\n M realsense2_camera/scripts/echo_metadada.py\n M realsense2_camera/scripts/rs2_listener.py\n M realsense2_camera/scripts/rs2_test.py\n M realsense2_camera/scripts/set_cams_transforms.py\n M realsense2_camera/scripts/show_center_depth.py\n M realsense2_camera/src/base_realsense_node.cpp\n M realsense2_camera/src/realsense_node_factory.cpp\n M realsense2_camera/src/t265_realsense_node.cpp\n M realsense2_camera/srv/DeviceInfo.srv\n M realsense2_description/CHANGELOG.rst\n M realsense2_description/CMakeLists.txt\n M realsense2_description/launch/view_d415_model.launch\n M realsense2_description/launch/view_d435_model.launch\n M realsense2_description/launch/view_d435i_model.launch\n M realsense2_description/launch/view_d455_model.launch\n M realsense2_description/launch/view_l515_model.launch\n M realsense2_description/launch/view_multiple_d435_models.launch\n M realsense2_description/launch/view_r410_model.launch\n M realsense2_description/launch/view_r430_model.launch\n M realsense2_description/meshes/d415.stl\n M realsense2_description/meshes/d435.dae\n M realsense2_description/meshes/d455.stl\n M realsense2_description/meshes/l515.dae\n M realsense2_description/meshes/plug.stl\n M realsense2_description/meshes/plug_collision.stl\n M realsense2_description/package.xml\n M realsense2_description/rviz/urdf.rviz\n M realsense2_description/tests/dual_d415.xacro\n M realsense2_description/tests/dual_d435.xacro\n M realsense2_description/tests/dual_r410.xacro\n M realsense2_description/tests/dual_r430.xacro\n M realsense2_description/tests/one_of_each.xacro\n M realsense2_description/tests/test_xacro.py\n M realsense2_description/urdf/_d415.urdf.xacro\n M realsense2_description/urdf/_d435.urdf.xacro\n M realsense2_description/urdf/_d435i.urdf.xacro\n M realsense2_description/urdf/_d435i_imu_modules.urdf.xacro\n M realsense2_description/urdf/_d455.urdf.xacro\n M realsense2_description/urdf/_l515.urdf.xacro\n M realsense2_description/urdf/_materials.urdf.xacro\n M realsense2_description/urdf/_r410.urdf.xacro\n M realsense2_description/urdf/_r430.urdf.xacro\n M realsense2_description/urdf/_usb_plug.urdf.xacro\n M realsense2_description/urdf/test_d415_camera.urdf.xacro\n M realsense2_description/urdf/test_d435_camera.urdf.xacro\n M realsense2_description/urdf/test_d435_multiple_cameras.urdf.xacro\n M realsense2_description/urdf/test_d435i_camera.urdf.xacro\n M realsense2_description/urdf/test_d455_camera.urdf.xacro\n M realsense2_description/urdf/test_l515_camera.urdf.xacro\n M realsense2_description/urdf/test_r410_camera.urdf.xacro\n M realsense2_description/urdf/test_r430_camera.urdf.xacro\n",
+    "gitlinks": []
+  },
+  {
+    "path": "src/rslidar_sdk",
+    "upstream": "https://github.com/RoboSense-LiDAR/rslidar_sdk.git",
+    "commit": "11c89b8683e4ab0e0aaf72fd37242555a4e5fc87",
+    "local_changes": " M config/config.yaml\n",
+    "gitlinks": [
+      "160000 ba07ba49565c8f1df745c8effaf64f39ac83a0ef 0\tsrc/rs_driver"
+    ]
+  },
+  {
+    "path": "src/rslidar_sdk/src/rs_driver",
+    "upstream": "https://github.com/RoboSense-LiDAR/rs_driver.git",
+    "commit": "ba07ba49565c8f1df745c8effaf64f39ac83a0ef",
+    "local_changes": "",
+    "gitlinks": []
+  },
+  {
+    "path": "src/scout_ros",
+    "upstream": "https://github.com/westonrobot/scout_base.git",
+    "commit": "7bfd74426a763a171b7f3c4c9e4efff4dc817da7",
+    "local_changes": " M scout_base/include/scout_base/scout_messenger.hpp\n M scout_base/launch/scout_base.launch\n M scout_base/launch/scout_mini_base.launch\n M scout_base/src/scout_base_node.cpp\n M scout_base/src/scout_messenger.cpp\n M scout_bringup/launch/scout_minimal.launch\n M scout_msgs/CMakeLists.txt\n M scout_msgs/msg/ScoutMotorState.msg\n M scout_msgs/msg/ScoutStatus.msg\n?? scout_bringup/launch/gmapping.launch\n?? scout_bringup/launch/navigation_4wd.launch\n?? scout_bringup/launch/open_MID360lidar.launch\n?? scout_bringup/launch/open_rslidar.launch\n?? scout_bringup/launch/scout_volecity_smoother.launch\n?? scout_description/launch/display_mini_models.launch\n?? scout_description/launch/display_scout_mini.launch\n?? scout_description/launch/display_scout_mini.zip\n?? scout_description/launch/scout_mini_stock.launch\n?? scout_description/maps/\n?? scout_description/meshes/scout_mini_base_link.STL\n?? scout_description/meshes/scout_mini_base_link.dae\n?? scout_description/meshes/scout_mini_base_link2.dae\n?? scout_description/meshes/scout_mini_base_link2.zip\n?? scout_description/meshes/wheel.dae\n?? scout_description/param/\n?? scout_description/rviz/\n?? scout_description/urdf/mini.xacro\n?? scout_description/urdf/scout_mini.gazebo\n?? scout_description/urdf/scout_mini.urdf\n?? scout_description/urdf/scout_mini_v2.urdf\n?? scout_description/urdf/scout_mini_wheel.gazebo\n?? scout_description/urdf/scout_mini_wheel.zip\n?? scout_description/urdf/scout_mini_wheel_1.xacro\n?? scout_description/urdf/scout_mini_wheel_2.xacro\n?? scout_description/urdf/scout_mini_wheel_3.xacro\n?? scout_description/urdf/scout_mini_wheel_4.xacro\n?? scout_msgs/msg/ScoutBmsStatus.msg\n?? scout_msgs/msg/ScoutDriverState.msg\n",
+    "gitlinks": []
+  },
+  {
+    "path": "src/ugv_sdk",
+    "upstream": "https://github.com/agilexrobotics/ugv_sdk.git",
+    "commit": "012a9aa02436ffe2ef66f211dd193be7b69902ba",
+    "local_changes": "",
+    "gitlinks": [
+      "160000 b796f7d44681514f58a683a3a71ff17c94edb0c1 0\ttest/googletest"
+    ]
+  }
+]
