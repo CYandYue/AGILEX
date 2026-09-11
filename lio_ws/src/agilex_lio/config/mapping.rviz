@@ -1,0 +1,35 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: lio_map
+    Frame Rate: 15
+  Displays:
+    - Class: rviz/Grid
+      Name: Grid
+      Enabled: true
+    - Class: rviz/PointCloud2
+      Name: LIO points
+      Enabled: true
+      Topic: /lio/cloud_registered
+      Queue Size: 2
+      Decay Time: 10
+      Size (Pixels): 2
+      Style: Points
+      Color Transformer: AxisColor
+    - Class: rviz/Path
+      Name: LIO path
+      Enabled: true
+      Topic: /lio/path
+    - Class: rviz/TF
+      Name: Frames
+      Enabled: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 10
+      Pitch: 0.7
+      Yaw: 0.8
+      Target Frame: body

@@ -1,0 +1,42 @@
+<launch>
+  <arg name="imu_source" default="hi226" doc="hi226 or mid360"/>
+  <arg name="method" default="bundle" doc="bundle is deployed; async/adaptive require an experimental build"/>
+  <arg name="multi_lidar" default="true"/>
+  <arg name="start_drivers" default="true"/>
+  <arg name="camera" default="false"/>
+  <arg name="rviz" default="false"/>
+  <arg name="use_sim_time" default="false"/>
+  <arg name="config" default="$(find agilex_lio)/config/$(arg imu_source).yaml"/>
+  <arg name="lidar_config" default="$(find agilex_lio)/config/mid360_dual_raw.json"/>
+  <param name="use_sim_time" value="$(arg use_sim_time)"/>
+
+  <!-- Upstream reads public parameters. Keep its config away from vendor mapping launch files. -->
+  <group ns="lio">
+    <rosparam command="load" file="$(arg config)"/>
+    <param name="common/multi_lidar" value="$(arg multi_lidar)"/>
+    <node pkg="fast_lio_multi" type="$(eval {'bundle':'fast_lio_multi_bundle', 'async':'fast_lio_multi_async', 'adaptive':'fast_lio_multi_adaptive'}[arg('method')])" name="mapping" output="screen" required="true">
+      <remap from="/Odometry" to="/lio/odometry"/>
+      <remap from="/path" to="/lio/path"/>
+      <remap from="/cloud_registered" to="/lio/cloud_registered"/>
+      <remap from="/cloud_registered_body" to="/lio/cloud_registered_body"/>
+      <remap from="/cloud_registered_tf" to="/lio/cloud_registered_tf"/>
+      <remap from="/cloud_effected" to="/lio/cloud_effected"/>
+      <remap from="/Laser_map" to="/lio/map_cloud"/>
+    </node>
+  </group>
+
+  <rosparam ns="lio_mounts" command="load" file="$(find agilex_lio)/config/mounts.yaml"/>
+  <node pkg="agilex_lio" type="sensor_frames.py" name="lio_sensor_frames" output="screen" required="true">
+    <param name="imu_source" value="$(arg imu_source)"/>
+    <param name="lidar_config" value="$(arg lidar_config)"/>
+  </node>
+  <node pkg="agilex_lio" type="sensor_relay" name="lio_sensor_relay" output="screen" required="true">
+    <rosparam param="input_topics">[/livox/lidar_192_168_1_113, /livox/lidar_192_168_1_154, /livox/imu_192_168_1_113, /livox/imu_192_168_1_154]</rosparam>
+  </node>
+  <include if="$(arg start_drivers)" file="$(find agilex_lio)/launch/sensors.launch">
+    <arg name="imu_source" value="$(arg imu_source)"/>
+    <arg name="camera" value="$(arg camera)"/>
+    <arg name="lidar_config" value="$(arg lidar_config)"/>
+  </include>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="lio_rviz" args="-d $(find agilex_lio)/config/mapping.rviz"/>
+</launch>

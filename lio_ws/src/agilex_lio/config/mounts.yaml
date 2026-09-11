@@ -1,0 +1,37 @@
+# Vendor initial geometry, not a calibration result.
+base_to_lidar1:
+  translation:
+  - 0.175
+  - -0.175
+  - 0.06
+  rpy:
+  - 0
+  - 0
+  - -0.78
+base_to_camera:
+  translation:
+  - 0.205
+  - 0
+  - 0.07
+  rpy:
+  - 0
+  - 0
+  - 0
+base_to_external_imu:
+  translation:
+  - 0
+  - 0
+  - 0
+  rpy:
+  - 0
+  - 0
+  - 0
+internal_imu_to_lidar:
+  translation:
+  - -0.011
+  - -0.02329
+  - 0.04412
+  rpy:
+  - 0
+  - 0
+  - 0

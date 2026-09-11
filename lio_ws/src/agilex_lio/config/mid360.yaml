@@ -1,0 +1,89 @@
+# Nominal MID360 internal IMU extrinsics from upstream config/multi.yaml.
+# Vehicle inter-lidar extrinsics remain unvalidated vendor initial values.
+common:
+  async_debug: false
+  multi_lidar: true
+  bundle_max_pair_skew: 0.05
+  publish_tf_results: false
+  max_iteration: 3
+  map_frame: lio_map
+  lid_topic: /sensors/mid360_a/lidar
+  lid_topic2: /sensors/mid360_b/lidar
+  imu_topic: /sensors/mid360_a/imu
+method:
+  voxelized_pt_num_thres: 1000
+  effect_pt_num_ratio_thres: 0.4
+  bundle_enabled_tic_thres: 10
+preprocess:
+  filter_size_surf: 0.2
+  point_filter_num: 6
+  point_filter_num2: 6
+  lidar_type: 1
+  lidar_type2: 1
+  scan_line: 4
+  scan_line2: 4
+  scan_rate: 10
+  scan_rate2: 10
+  timestamp_unit: 3
+  timestamp_unit2: 3
+  blind: 0.5
+  blind2: 0.5
+mapping:
+  cube_side_length: 200.0
+  acc_cov: 0.1
+  gyr_cov: 0.1
+  b_acc_cov: 0.0001
+  b_gyr_cov: 0.0001
+  det_range: 50.0
+  extrinsic_est_en: false
+  extrinsic_imu_to_lidars: false
+  extrinsic_T:
+  - -0.011
+  - -0.02329
+  - 0.04412
+  extrinsic_R:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 1
+  extrinsic_T_L2_wrt_L1:
+  - -0.4949747468305833
+  - 0
+  - 0
+  extrinsic_R_L2_wrt_L1:
+  - -1
+  - 0
+  - 0
+  - 0
+  - -1
+  - 0
+  - 0
+  - 0
+  - 1
+  extrinsic_T_L1_wrt_drone:
+  - 0
+  - 0
+  - 0
+  extrinsic_R_L1_wrt_drone:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 1
+publish:
+  path_en: true
+  scan_publish_en: true
+  dense_publish_en: false
+  scan_bodyframe_pub_en: false
+pcd_save:
+  pcd_save_en: false
+  interval: 100

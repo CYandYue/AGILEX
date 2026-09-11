@@ -1,0 +1,20 @@
+<launch>
+  <arg name="imu_source" default="hi226"/>
+  <arg name="camera" default="false"/>
+  <arg name="lidar_config" default="$(find agilex_lio)/config/mid360_dual_raw.json"/>
+  <!-- Global parameters are required by this installed version of driver2. -->
+  <param name="xfer_format" value="1"/>
+  <param name="multi_topic" value="1"/>
+  <param name="data_src" value="0"/>
+  <param name="publish_freq" type="double" value="10.0"/>
+  <param name="output_data_type" value="0"/>
+  <param name="frame_id" value="livox_frame"/>
+  <param name="user_config_path" value="$(arg lidar_config)"/>
+  <param name="enable_lidar_bag" value="false"/>
+  <param name="enable_imu_bag" value="false"/>
+  <node pkg="livox_ros_driver2" type="livox_ros_driver2_node" name="lio_livox_driver" output="screen" required="true"/>
+  <node if="$(eval arg('imu_source') == 'hi226')" pkg="serial_imu" type="serial_imu" name="lio_hi226" output="log" required="true"/>
+  <include if="$(arg camera)" file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="true"/>
+  </include>
+</launch>

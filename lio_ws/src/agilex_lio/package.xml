@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>agilex_lio</name>
+  <version>0.1.0</version>
+  <description>Scout dual MID360 FAST-LIO-MULTI integration.</description>
+  <maintainer email="agilex@example.com">agilex</maintainer>
+  <license>BSD-3-Clause</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>fast_lio_multi</exec_depend>
+  <depend>livox_ros_driver2</depend>
+  <depend>roscpp</depend>
+  <exec_depend>serial_imu</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <depend>sensor_msgs</depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <test_depend>nav_msgs</test_depend>
+  <test_depend>rosbag</test_depend>
+</package>
