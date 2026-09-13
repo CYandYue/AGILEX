@@ -1,0 +1,23 @@
+<launch>
+  <arg name="imu_source" default="hi226"/>
+  <arg name="rviz" default="false"/>
+  <arg name="width" default="640"/>
+  <arg name="height" default="480"/>
+  <arg name="fps" default="30"/>
+  <include file="$(find agilex_lio)/launch/mapping.launch">
+    <arg name="imu_source" value="$(arg imu_source)"/>
+    <arg name="rviz" value="$(arg rviz)"/>
+    <arg name="camera" value="false"/>
+  </include>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="true"/>
+    <arg name="enable_sync" value="true"/>
+    <arg name="color_width" value="$(arg width)"/>
+    <arg name="color_height" value="$(arg height)"/>
+    <arg name="depth_width" value="$(arg width)"/>
+    <arg name="depth_height" value="$(arg height)"/>
+    <arg name="color_fps" value="$(arg fps)"/>
+    <arg name="depth_fps" value="$(arg fps)"/>
+    <arg name="enable_pointcloud" value="false"/>
+  </include>
+</launch>

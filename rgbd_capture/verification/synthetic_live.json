@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "frames": 35,
+  "actual_rate_hz": 6.000006957184538,
+  "min_depth_valid_fraction": 1.0,
+  "max_rgbd_delta_s": 0.0,
+  "max_odom_gap_s": 0.10045312,
+  "camera_pose_reproduced_from_raw_odometry": true,
+  "hardware_sync_verified": false,
+  "accuracy_validated": false,
+  "bag_bytes": 1800685,
+  "logs": "/tmp/rgbd-capture-live-_ztmktm3"
+}
