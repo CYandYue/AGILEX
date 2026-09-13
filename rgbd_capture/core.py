@@ -207,7 +207,8 @@ class Engine:
             self.write(topic, TFMessage(list(self.static.values())), arrival_ns)
         else:
             self.write(topic, msg, arrival_ns)
-        self.drain(wall)
+        if topic in (RGB, DEPTH, ODOM, RGB_INFO, DEPTH_INFO, '/tf_static'):
+            self.drain(wall)
 
     def _pair(self, wall):
         a, b = self.images[RGB], self.images[DEPTH]

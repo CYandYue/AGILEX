@@ -24,6 +24,8 @@ from nav_msgs.msg import Odometry
 from sensor_msgs.msg import CameraInfo, Image
 from tf2_msgs.msg import TFMessage
 
+from raw_recording import RawRecording, merge_bags
+
 from core import (Config, Engine, RGB, DEPTH, RGB_INFO, DEPTH_INFO, ODOM, GROUP,
                   stamp, json_msg, image_array, calibration, interpolate,
                   pose_matrix, transform_matrix, validate_rgbd)
@@ -88,7 +90,8 @@ def record(args):
     if dest.suffix != '.bag':
         raise ValueError('Output filename must end in .bag')
     active, partial, report_path = (Path(str(dest)+suffix) for suffix in ('.active', '.partial', '.report.json'))
-    if any(p.exists() for p in (dest, active, partial, report_path)):
+    recovery = [Path(str(dest)+suffix) for suffix in ('.raw.bag','.raw.bag.active','.raw.log','.merge.active')]
+    if any(p.exists() for p in (dest, active, partial, report_path, *recovery)):
         raise FileExistsError('Output or recovery file already exists; use a new filename')
     dest.parent.mkdir(parents=True, exist_ok=True)
     if shutil.disk_usage(dest.parent).free < args.min_free_gb*1024**3:
@@ -111,7 +114,7 @@ def record(args):
     events = queue.Queue(maxsize=512)
     stop, fatal = threading.Event(), threading.Event()
     state_lock = threading.Lock()
-    state = dict(bytes=0, error=None, accepting_images=True)
+    state = dict(bytes=0, error=None, accepting_images=True, peak_bytes=0, peak_events=0)
     old_handlers = {}
     for sig in (signal.SIGINT, signal.SIGTERM):
         old_handlers[sig] = signal.signal(sig, lambda *_: stop.set())
@@ -125,9 +128,11 @@ def record(args):
                 fatal.set()
                 return
             state['bytes'] += size
+            state['peak_bytes'] = max(state['peak_bytes'], state['bytes'])
         event = (topic, msg, rospy.Time.now().to_nsec(), time.monotonic(), size)
         try:
             events.put_nowait(event)
+            state['peak_events'] = max(state['peak_events'], events.qsize())
         except queue.Full:
             with state_lock:
                 state['bytes'] -= size
@@ -136,6 +141,8 @@ def record(args):
 
     # Subscribe after opening the bag, to capture latched calibration/TF once.
     subscribers, bag, engine = [], None, None
+    raw_recording = None
+    raw_counts = {}
     error = None
     started = time.monotonic()
     tail_deadline = None
@@ -155,13 +162,15 @@ def record(args):
         # Reserve the pathname exclusively before rosbag opens it.
         with active.open('xb'):
             pass
-        bag = rosbag.Bag(str(active), 'w', compression=args.compression)
+        bag = rosbag.Bag(str(active), 'w', compression=args.compression, chunk_threshold=4*1024*1024)
         writer = Writer(bag)
         writer(SESSION, json_msg(session), rospy.Time.now().to_nsec())
         engine = Engine(writer, cfg)
+        if args.raw_sensors:
+            raw_recording = RawRecording(dest, RAW_TOPICS, args.compression)
         topics = {RGB: Image, DEPTH: Image, RGB_INFO: CameraInfo, DEPTH_INFO: CameraInfo,
                   EXTRA_INFO: CameraInfo, ODOM: Odometry, '/tf': TFMessage, '/tf_static': TFMessage}
-        for topic in META_TOPICS + (RAW_TOPICS if args.raw_sensors else []):
+        for topic in META_TOPICS:
             topics[topic] = rospy.AnyMsg
         for topic, cls in topics.items():
             subscribers.append(rospy.Subscriber(topic, cls, callback, callback_args=topic,
@@ -170,6 +179,8 @@ def record(args):
         print('Waiting for valid RGB-D, CameraInfo, LIO brackets and static camera extrinsics. Ctrl-C stops images and drains the pose tail.', flush=True)
         while True:
             now = time.monotonic()
+            if raw_recording:
+                raw_recording.check_running()
             if fatal.is_set():
                 raise RuntimeError(state['error'])
             if rospy.is_shutdown():
@@ -213,6 +224,12 @@ def record(args):
         for subscriber in subscribers:
             subscriber.unregister()
         try:
+            if raw_recording:
+                raw_counts = raw_recording.stop()
+                imu_source = session['parameters']['/lio'].get('common',{}).get('imu_topic','/imu/data_raw')
+                selected = '/livox/imu_192_168_1_113' if imu_source == '/sensors/mid360_a/imu' else imu_source
+                if raw_counts.get(selected,0) == 0:
+                    raise RuntimeError('Raw recording missing selected IMU '+selected)
             if engine:
                 # Process callbacks already queued before unsubscribe.
                 while not events.empty() and error is None:
@@ -225,7 +242,8 @@ def record(args):
             if not summary['frames'] and error is None:
                 error = 'No complete frames recorded'
             summary.update(status='INCOMPLETE' if error else 'RECORDED', error=error,
-                           elapsed_wall_s=time.monotonic()-started)
+                           elapsed_wall_s=time.monotonic()-started, raw_topic_counts=raw_counts,
+                           queue_peak_events=state['peak_events'], queue_peak_bytes=state['peak_bytes'])
             if bag:
                 Writer(bag)(REPORT, json_msg(summary), rospy.Time.now().to_nsec())
         except BaseException as exc:
@@ -242,7 +260,15 @@ def record(args):
                 signal.signal(sig, handler)
     if error is None:
         try:
-            summary['validation'] = check_bag(active)
+            candidate = active
+            if raw_recording:
+                needed = active.stat().st_size+raw_recording.path.stat().st_size+args.min_free_gb*1024**3
+                if shutil.disk_usage(dest.parent).free < needed:
+                    raise RuntimeError('Insufficient space for final merge; raw/core files retained')
+                candidate = Path(str(dest)+'.merge.active')
+                print('Merging raw sensors into the final bag...',flush=True)
+                merge_bags(active,raw_recording.path,candidate,args.compression)
+            summary['validation'] = check_bag(candidate)
             summary['status'] = 'PASS'
         except Exception as exc:
             error = 'Post-record validation failed: '+str(exc)
@@ -251,7 +277,11 @@ def record(args):
         if active.exists():
             active.rename(partial)
     else:
-        active.rename(dest)
+        candidate.rename(dest)
+        if raw_recording:
+            active.unlink()
+            raw_recording.path.unlink()
+            raw_recording.log_path.unlink()
     report_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False, allow_nan=False)+'\n')
     print(json.dumps(summary, indent=2, ensure_ascii=False), flush=True)
     if error:
@@ -300,6 +330,10 @@ def check_bag(path):
         saved_report = json.loads(reports[0].message.data)
         if saved_report.get('error') or saved_report.get('status') not in ('RECORDED', 'PASS'):
             raise ValueError('Recorder marked this bag incomplete')
+        if session.get('raw_sensors'):
+            counts = saved_report.get('raw_topic_counts',{})
+            if not counts or any(bag.get_message_count(t) != count for t,count in counts.items()):
+                raise ValueError('Merged raw message counts disagree with recorder report')
         odoms = {}
         last = -1
         for _, msg, _ in bag.read_messages(topics=[ODOM]):

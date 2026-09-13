@@ -2,7 +2,7 @@
 
 本目录由 AGILEX 主仓库直接管理，无独立 Git 仓库。目标是生成一个服务器端可独立读取的 ROS1 bag：每组 RGB-D 都有对应图像时刻的相机光学坐标系位姿，同时保留原始 LIO 轨迹、运行时 TF 和标定信息。
 
-默认目标 **6 Hz**，相机 **640×480、30 Hz** 工作，配对后整组降频。每帧相机位姿通过图像时刻前后两条 LIO 位姿插值，并乘以实际运行中的静态外参获得。这里的“一一对应”是明确的数据关联，不表示硬件同步或真值精度。
+验收目标为实际完整帧组 **超过 2 Hz**。默认采集上限 **6 Hz**，相机 **640×480、6 Hz** 工作，配对后整组降频。每帧相机位姿通过图像时刻前后两条 LIO 位姿插值，并乘以实际运行中的静态外参获得。相机关闭彩色自动曝光的低照度降帧选项（自动曝光仍开启），减少 RGB/深度配对失败；实际输出以报告中的 `actual_rate_hz` 为准。这里的“一一对应”是明确的数据关联，不表示硬件同步或真值精度。
 
 ## 1. 第一次实测
 
@@ -31,7 +31,7 @@
 建议第一段短实测加上原始双雷达/IMU，便于后续重新运行 LIO：
 
 ```bash
-~/agilex_ws/rgbd_capture/run.sh record ~/datasets/debug01.bag --raw-sensors
+~/agilex_ws/rgbd_capture/run.sh record ~/datasets/debug02.bag --raw-sensors
 ```
 
 在终端 B 按 **Ctrl-C** 停止录制。脚本先停止接纳新图像，继续等待最多 3 秒的 LIO 尾部数据，然后关闭并校验 bag。**看到 `Validated bag:` 后，再停止终端 A**。采集脚本不会发送底盘控制命令。
@@ -87,7 +87,7 @@ T_world_camera = T_world_body(t_rgb + offset) × T_body_camera
 - 原 RGB、对齐深度 CameraInfo；若驱动发布，也保存原始深度 CameraInfo、彩色/深度 metadata 和 `depth_to_color` 外参话题。
 - `/dataset/session`：schema 版本、采集参数、程序 Git 版本及源码哈希、`/lio`、`/lio_mounts`、`/camera` 参数快照、坐标/时间/深度单位约定。
 - `/dataset/report`：录制统计、丢弃原因和是否正常收尾。停止后的完整校验结果另保存在 `.report.json`，也可随时从 bag 重新运行 `check`。
-- `--raw-sensors` 开启时，保存两路 `/livox/lidar_192_168_1_*`、两路内置 IMU 和 `/imu/data_raw`。原始雷达保留逐点时间，不做 Python 逐点解析。未发布的可选原始话题不会被虚构。
+- `--raw-sensors` 开启时，保存两路 `/livox/lidar_192_168_1_*`、两路内置 IMU 和 `/imu/data_raw`。原始雷达保留逐点时间。高频原始数据由独立 C++ `rosbag record` 录制，停止后按记录时间合并到同一个最终 bag，并核对所有原始话题的消息数。两路雷达及当前 LIO 使用的 IMU 必须有数据，其余未发布的可选原始话题不会被虚构。
 
 核心数据均为标准 ROS 消息，服务器读取 `/dataset/*` 不需要安装 Livox 消息包。Bag 自带可选原始话题的消息定义；自行读取全部话题的第三方工具应支持动态消息定义。
 
@@ -147,6 +147,12 @@ TF 连通所需的变换，并从原始 odometry 和外参重新计算每帧相�
 正常处理到的错误保留 `.bag.partial` 和失败报告；断电/强杀可能只留下 `.active`。
 这些文件供恢复排查，不当作完整实验数据，脚本也不会自动覆盖或删除。
 
+`--raw-sensors` 录制过程中还会出现 `.bag.raw.bag.active` / `.bag.raw.bag` 和 `.bag.raw.log`；
+停止后的合并使用 `.bag.merge.active`。合并及校验可能需要几十秒或更久，随数据量增加；请等待 `Validated bag:` 再关闭终端。
+合并阶段需要额外约一份录制数据的磁盘空间；成功后自动清理本次临时分片，失败时保留用于排查。
+报告中的 `queue_peak_events` / `queue_peak_bytes` 是主队列峰值，`raw_topic_counts` 是原始话题消息数。
+`PASS` 表示数据完整性和位姿关联校验通过，实际帧率请单独看 `actual_rate_hz`，它不保证达到目标帧率。
+
 只希望上传一个文件时上传最终 `.bag` 即可。服务器 `check/export` 不需要 roscore，
 但需要 ROS1 Python 的 rosbag、标准消息、tf/tf2，以及 NumPy；去畸变/PNG 导出还需要 OpenCV。
 可以先在 ROS Noetic 环境中导出，再让三维场景图算法使用普通 PNG/NPY/JSON/TUM 数据，无需改算法的 Python 环境。
@@ -166,5 +172,5 @@ bash -c 'source /opt/ros/noetic/setup.bash; /usr/bin/python3 ~/agilex_ws/rgbd_ca
 ```
 
 第二项会创建私有临时 ROS master，发布合成 640×480 RGB-D，执行真实采集 CLI、
-Ctrl-C 收尾及 bag 校验；不启动传感器和底盘。实车 RGB-D 联合负载、深度质量及
-运动融合效果仍需要你的首段短测确认。
+Ctrl-C 收尾及 bag 校验；添加 `--raw-sensors` 可验证独立原始数据录制及合并（合成雷达负载不依赖 Livox 包）。
+该合成测试不启动传感器和底盘。静态实机结果见 `verification/`，运动同步和融合质量仍需行驶实测确认。

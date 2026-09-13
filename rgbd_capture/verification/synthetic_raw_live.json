@@ -1,0 +1,57 @@
+{
+  "counts": {
+    "received:/camera/color/camera_info": 1,
+    "received:/tf_static": 1,
+    "received:/tf": 91,
+    "received:/camera/aligned_depth_to_color/camera_info": 1,
+    "received:/camera/aligned_depth_to_color/image_raw": 181,
+    "received:/camera/color/image_raw": 180,
+    "paired": 180,
+    "rate_filtered": 144,
+    "received:/lio/odometry": 90,
+    "dropped:no_bracketing_odometry": 1,
+    "frames": 35
+  },
+  "frames": 35,
+  "actual_rate_hz": 5.989740288018057,
+  "max_observed_lio_arrival_age_s": 0.031959907,
+  "first_frame_ns": 1789301184369807104,
+  "last_frame_ns": 1789301190046180096,
+  "pending": 0,
+  "last_rejection": "no_bracketing_odometry",
+  "configuration": {
+    "rate": 6,
+    "rgbd_slop": 0.01,
+    "max_odom_gap": 0.25,
+    "wait": 3,
+    "camera_time_offset": 0,
+    "depth_scale": 0.001,
+    "world": "lio_map",
+    "body": "body",
+    "optical": "camera_color_optical_frame",
+    "image_buffer": 60
+  },
+  "status": "PASS",
+  "error": null,
+  "elapsed_wall_s": 10.189023712000562,
+  "raw_topic_counts": {
+    "/livox/lidar_192_168_1_113": 68,
+    "/livox/lidar_192_168_1_154": 68,
+    "/livox/imu_192_168_1_113": 879,
+    "/livox/imu_192_168_1_154": 878,
+    "/imu/data_raw": 879
+  },
+  "queue_peak_events": 31,
+  "queue_peak_bytes": 17543168,
+  "validation": {
+    "status": "PASS",
+    "frames": 35,
+    "actual_rate_hz": 5.989740288018057,
+    "min_depth_valid_fraction": 1.0,
+    "max_rgbd_delta_s": 0.0,
+    "max_odom_gap_s": 0.10769536,
+    "camera_pose_reproduced_from_raw_odometry": true,
+    "hardware_sync_verified": false,
+    "accuracy_validated": false
+  }
+}

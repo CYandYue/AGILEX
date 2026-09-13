@@ -224,6 +224,29 @@ class CaptureTests(unittest.TestCase):
         with rosbag.Bag(str(path)) as bag:
             self.assertAlmostEqual(next(bag.read_messages()).message.data,3.5)
 
+    def test_raw_merge_preserves_connections_and_detects_missing_raw(self):
+        from raw_recording import merge_bags
+        good, core, raw, merged = (self.root/name for name in ('good.bag','core.bag','sensor.bag','merged.bag'))
+        make_bag(good)
+        with rosbag.Bag(str(good)) as src, rosbag.Bag(str(core),'w') as dst:
+            for topic,msg,t in src.read_messages():
+                if topic in (SESSION,REPORT):
+                    data = json.loads(msg.data)
+                    data.update({'raw_sensors':True} if topic == SESSION else {'raw_topic_counts':{'/raw':1}})
+                    msg = json_msg(data)
+                header = dict(latching='1',type=msg._type,md5sum=msg._md5sum,message_definition=msg._full_text) if topic == '/tf_static' else None
+                dst.write(topic,msg,t,connection_header=header)
+        with rosbag.Bag(str(raw),'w') as bag:
+            bag.write('/raw',Float32(3.5),stamp(int(101e9)))
+        with self.assertRaises(ValueError):check_bag(core)
+        merge_bags(core,raw,merged)
+        self.assertEqual(check_bag(merged)['status'],'PASS')
+        with rosbag.Bag(str(merged)) as bag:
+            messages = list(bag.read_messages(topics=['/raw','/tf_static'],return_connection_header=True))
+            self.assertEqual(next(m for m in messages if m.topic == '/raw').message.data,3.5)
+            self.assertTrue(all(m.connection_header['latching'] in ('1',b'1') for m in messages if m.topic == '/tf_static'))
+        with self.assertRaises(FileExistsError):merge_bags(core,raw,merged)
+
     def test_float_depth_export_preserves_meters_and_nan(self):
         bag = self.root/'float.bag'
         make_bag(bag,float_depth=True)

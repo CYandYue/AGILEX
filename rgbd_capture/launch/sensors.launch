@@ -3,7 +3,9 @@
   <arg name="rviz" default="false"/>
   <arg name="width" default="640"/>
   <arg name="height" default="480"/>
-  <arg name="fps" default="30"/>
+  <arg name="fps" default="6"/>
+  <!-- Keep RGB cadence fixed in low light so SDK RGB/depth matching can work. -->
+  <param name="/camera/rgb_camera/auto_exposure_priority" type="bool" value="false"/>
   <include file="$(find agilex_lio)/launch/mapping.launch">
     <arg name="imu_source" value="$(arg imu_source)"/>
     <arg name="rviz" value="$(arg rviz)"/>
